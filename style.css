@@ -1,0 +1,232 @@
+/* --- 1. 基本設定（リセット・共通） --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* スムーズスクロール */
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Noto Sans JP', serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. ヘッダー（固定） --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.9); /* 少し透ける白 */
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    transition: opacity 0.3s;
+}
+
+nav ul li a:hover {
+    opacity: 0.5;
+}
+
+/* --- 3. Home (Hero): 写真全体を表示する設定 --- */
+.hero {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #fff; /* 写真以外の余白の色 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 写真全体を欠けさせずに表示 */
+    display: block;
+}
+
+/* --- 4. 共通セクション設定 --- */
+.section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* --- 5. Menu --- */
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.menu-list dt {
+    width: 70%;
+    text-align: left;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-list dd {
+    width: 30%;
+    text-align: right;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- 6. Gallery --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.g-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    display: block;
+}
+
+/* --- 7. Access (Google Map対応) & Reserve --- */
+.map-area, .calendar-area {
+    width: 100%;
+    height: 400px; /* 地図の高さ */
+    background-color: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    margin-top: 20px;
+    overflow: hidden; /* 地図のはみ出し防止 */
+}
+
+/* Googleマップなどの埋め込みiframeを親要素いっぱいに広げる */
+.map-area iframe,
+.calendar-area iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+
+.address-text {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* --- 8. フッター --- */
+footer {
+    padding: 60px 0;
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #bbb;
+}
+
+/* --- 9. スマホ対応 (レスポンシブ) --- */
+@media (max-width: 768px) {
+    header { padding: 15px 20px; }
+    .logo { font-size: 1.3rem; }
+    nav ul li { margin-left: 12px; }
+    nav ul li a { font-size: 0.65rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .section { padding: 60px 20px; }
+    .map-area, .calendar-area { height: 300px; }
+}
+
+/* --- スマホ専用の余白カット調整 --- */
+@media (max-width: 768px) {
+    /* 1. TOP写真の上下にある巨大な余白を消す */
+    .hero {
+        height: auto; /* 画面いっぱいの高さをやめて写真の高さに合わせる */
+        min-height: auto;
+        padding-top: 60px; /* ヘッダーに被らないための最低限の隙間 */
+    }
+
+    .hero-image {
+        height: auto;
+    }
+
+    .hero-image img {
+        height: auto; /* 写真全体を出しつつ隙間を埋める */
+    }
+
+    /* 2. 各セクション（MENU, GALLERY等）の上下余白をさらに詰める */
+    .section {
+        padding: 30px 20px; /* 60pxからさらに半分に */
+    }
+
+    .section-title {
+        margin-bottom: 20px; /* 見出しの下の隙間を詰める */
+    }
+
+    /* 3. ヘッダーのロゴとメニューの間隔を詰める */
+    header {
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+        letter-spacing: 0.1em;
+    }
+
+    nav ul li {
+        margin-left: 8px; /* メニュー同士を近づける */
+    }
+
+    nav ul li a {
+        font-size: 0.6rem;
+    }
+}
