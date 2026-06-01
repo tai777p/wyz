@@ -269,7 +269,11 @@ footer {
         padding: 40px 0;
     }
     
-    .footer-tel {
-        font-size: 0.9rem;
+   .footer-tel {
+    font-size: 1.05rem;      /* 大きさを自然なサイズに微調整 */
+    font-weight: 500;       /* 太すぎず細すぎない、程よい上品な太さに */
+    letter-spacing: 0.15em;
+    color: #333;            /* 全体の文字と同じ、洗練されたダークグレー（濃いめ） */
+    margin-bottom: 15px;
     }
 }
