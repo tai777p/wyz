@@ -40,7 +40,6 @@ header {
     font-size: 1.7rem;
     font-weight: 300;
     letter-spacing: 0.3em;
-    /* PC版の大文字強制を解除 */
 }
 
 nav ul {
@@ -194,9 +193,9 @@ footer {
 
 .footer-tel {
     font-size: 1.05rem;
-    font-weight: 500;       /* 程よい上品な太さ */
+    font-weight: 500;
     letter-spacing: 0.15em;
-    color: #333;            /* 全体と馴染む濃いめのグレー */
+    color: #333;
     margin-bottom: 15px;
 }
 
@@ -219,7 +218,8 @@ footer {
     .logo {
         font-size: 1.1rem;
         letter-spacing: 0.1em;
-        text-transform: none; /* ←【ココを修正！】スマホでも大文字化させず、HTMLの「Wys」をそのまま映します */
+        /* スマホの大文字強制を完全に打ち消して最優先します */
+        text-transform: none !important;
     }
 
     nav ul li {
